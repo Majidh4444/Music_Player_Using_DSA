@@ -19,7 +19,8 @@ void insert()
     cout << "Enter the Song name: ";
     while ((getchar()) != '\n')
         ;
-    cin >> temp;
+    cin.ignore();
+    cin.getline(temp, sizeof(temp)); //cin.getline reads characters from the input stream until it encounters a newline character ('\n')
     struct node *new_node = (struct node *)malloc(sizeof(struct node));
     strcpy(new_node->data, temp);
     while (head == NULL)
