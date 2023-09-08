@@ -19,8 +19,7 @@ void insert()
     cout << "Enter the Song name: ";
     while ((getchar()) != '\n')
         ;
-    cin.ignore();
-    cin.getline(temp, sizeof(temp)); //cin.getline reads characters from the input stream until it encounters a newline character ('\n')
+    scanf("%[^\n]%*c", temp);
     struct node *new_node = (struct node *)malloc(sizeof(struct node));
     strcpy(new_node->data, temp);
     while (head == NULL)
@@ -41,7 +40,7 @@ void delete_music()
     cout << "Enter the Song to be removed: " << endl;
     while (getchar() != '\n')
     {
-        cin >> temp;
+        scanf("%[^\n]%*c", temp);
     }
     if (head == NULL)
     {
@@ -139,7 +138,7 @@ void specific_file()
     cout << "Enter the song to be searched: " << endl;
     while ((getchar()) != '\n')
         ;
-    cin >> temp;
+    scanf("%[^\n]%*c", temp);
     struct node *ptr = head;
     do
     {
