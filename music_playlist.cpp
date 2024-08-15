@@ -39,32 +39,38 @@ void delete_music()
 {
     cout << "Enter the Song to be removed: " << endl;
     while (getchar() != '\n')
-    {
-        scanf("%[^\n]%*c", temp);
-    }
+        ;
+    scanf("%[^\n]%*c", temp);
     if (head == NULL)
     {
         cout << "No music is there to delete" << endl;
+        return;
     }
     struct node *ptr = head;
     do
     {
-        if (ptr->next == ptr && strcmp(ptr->data, temp) == 1)
+        if (ptr->next == ptr && strcmp(ptr->data, temp) == 0)
         {
             cout << "Song is removed! Playlist is Empty now!" << endl;
             head = NULL;
             free(ptr);
             return;
         }
-        else if (strcmp(ptr->data, temp) == 1)
+        else if (strcmp(ptr->data, temp) == 0)
         {
             struct node *prev = ptr->prev;
             struct node *next = ptr->next;
             prev->next = next;
             next->prev = prev;
+            if (ptr == head)
+            {
+                head = next;
+            }
+            cout << ptr->data << " Song is removed" << endl;
             free(ptr);
             return;
         }
+        ptr = ptr->next;
     } while (ptr != head);
     cout << "Music Not Found!" << endl;
 }
@@ -142,7 +148,7 @@ void specific_file()
     struct node *ptr = head;
     do
     {
-        if (strcmp(ptr->data, temp) == 1)
+        if (strcmp(ptr->data, temp) == 0)
         {
             cout << "Song Found!" << endl;
             cout << "Song Playing!" << endl;
@@ -156,9 +162,9 @@ void specific_file()
 int main()
 {
     cout << endl
-         << "                     ***Welcome to the Playlist***                    " << endl;
-    int choise;
+         << "                     ***Welcome to the Majidh's Playlist***                    " << endl;
 menu:
+    int choise;
     cout << endl
          << "----Menu of the playlist----" << endl;
     cout << "1. Add Music" << endl;
